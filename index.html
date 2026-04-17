@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bikram Chapagain | Computer Engineer</title>
+    
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="stars-bg" id="starsBg"></div>
+
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Bikram Chapagain (Bikky)</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#skills">Technical Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button id="darkModeToggle" class="dark-mode-btn">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-wrapper">
+                    <div class="hero-text">
+                        <h1>Hey, I'm <span class="highlight" id="typingName"></span></h1>
+                        <h2>Computer Engineering Student | ML Enthusiast | Image analysis</h2>
+                        <p>I turn data into decisions and code into solutions. Currently exploring CNNs and web deployments.</p>
+                        <a href="img/cv_Bikram.pdf" download class="btn-cv">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                    </div>
+                    <div class="hero-image">
+                        <img src="img/profile.png" alt="Bikram Chapagain" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <p>I am a Computer Engineering student with a strong interest in Artificial Intelligence, Data Science, and software development. I have experience building real-world projects, including a Face Recognition Attendance System using Python and MySQL.</p>
+                    <p>I am passionate about learning new technologies and improving my skills in machine learning, backend development, and data engineering. My goal is to build efficient, scalable solutions and grow into a professional AI and data engineer.</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> <a href="https://www.google.com/maps?q=Arjunchupari+Rural+Municipality+Syangja+Nepal" target="_blank" class="location-link">Gandaki Province, Syangja, Nepal</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="work" class="projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3>Intel Image Classification</h3>
+                        <p class="tech"><i class="fab fa-python"></i> TensorFlow | CNN</p>
+                        <p>Classified landscape images into 6 categories using convolutional neural networks with 85% accuracy.</p>
+                        <div class="project-links">
+                            <a href="https://www.kaggle.com/code/bikramchapagain/intel-image-classification-project" target="_blank" class="project-link"><i class="fab fa-kaggle"></i> View on Kaggle</a>
+                        </div>
+                        <div class="rating" data-project="intel">
+                            <span>Rate: </span>
+                            <span class="stars" data-rating="0">☆☆☆☆☆</span>
+                            <span class="rating-message"></span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Fruits 360 Classification</h3>
+                        <p class="tech"><i class="fab fa-python"></i> CNN | TensorFlow</p>
+                        <p>Developed CNN achieving 92% accuracy across 131 fruit categories with data augmentation.</p>
+                        <div class="project-links">
+                            <a href="https://www.kaggle.com/code/bikramchapagain/fruits-360-image-classification-project" target="_blank" class="project-link"><i class="fab fa-kaggle"></i> View on Kaggle</a>
+                        </div>
+                        <div class="rating" data-project="fruits">
+                            <span>Rate: </span>
+                            <span class="stars" data-rating="0">☆☆☆☆☆</span>
+                            <span class="rating-message"></span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>House Price Prediction</h3>
+                        <p class="tech"><i class="fab fa-python"></i> Scikit-learn | Pandas</p>
+                        <p>Built Linear Regression & Random Forest models with comprehensive EDA for Nepal housing data.</p>
+                        <div class="project-links">
+                            <a href="https://www.kaggle.com/code/bikramchapagain/house-price-prediction" target="_blank" class="project-link"><i class="fab fa-kaggle"></i> View on Kaggle</a>
+                        </div>
+                        <div class="rating" data-project="houseprice">
+                            <span>Rate: </span>
+                            <span class="stars" data-rating="0">☆☆☆☆☆</span>
+                            <span class="rating-message"></span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Student Performance Analysis</h3>
+                        <p class="tech"><i class="fab fa-python"></i> ML | Feature Selection</p>
+                        <p>Analyzed student data to predict academic outcomes using multiple ML algorithms.</p>
+                        <div class="project-links">
+                            <a href="https://www.kaggle.com/code/bikramchapagain/student-academic-performance-analysis-grade-p" target="_blank" class="project-link"><i class="fab fa-kaggle"></i> View on Kaggle</a>
+                        </div>
+                        <div class="rating" data-project="student">
+                            <span>Rate: </span>
+                            <span class="stars" data-rating="0">☆☆☆☆☆</span>
+                            <span class="rating-message"></span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Web Attendance System</h3>
+                        <p class="tech"><i class="fas fa-flask"></i> Flask | MySQL</p>
+                        <p>Full-stack web app for tracking attendance with admin dashboard and reports.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/bikram76334" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
+                        </div>
+                        <div class="rating" data-project="attendance">
+                            <span>Rate: </span>
+                            <span class="stars" data-rating="0">☆☆☆☆☆</span>
+                            <span class="rating-message"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skill-list">
+                    <div class="skill-item"><span><i class="fab fa-python"></i> Python</span><div class="progress-bar"><div class="progress" style="width: 78%"></div></div><span class="percentage">78%</span></div>
+                    <div class="skill-item"><span><i class="fas fa-database"></i> SQL</span><div class="progress-bar"><div class="progress" style="width: 68%"></div></div><span class="percentage">68%</span></div>
+                    <div class="skill-item"><span><i class="fab fa-js"></i> JavaScript</span><div class="progress-bar"><div class="progress" style="width: 50%"></div></div><span class="percentage">50%</span></div>
+                    <div class="skill-item"><span><i class="fas fa-flask"></i> Flask</span><div class="progress-bar"><div class="progress" style="width: 70%"></div></div><span class="percentage">70%</span></div>
+                    <div class="skill-item"><span><i class="fab fa-tensorflow"></i> TensorFlow</span><div class="progress-bar"><div class="progress" style="width: 65%"></div></div><span class="percentage">65%</span></div>
+                    <div class="skill-item"><span><i class="fas fa-eye"></i> OpenCV</span><div class="progress-bar"><div class="progress" style="width: 65%"></div></div><span class="percentage">65%</span></div>
+                    <div class="skill-item"><span><i class="fas fa-table"></i> Pandas</span><div class="progress-bar"><div class="progress" style="width: 68%"></div></div><span class="percentage">68%</span></div>
+                    <div class="skill-item"><span><i class="fas fa-chart-line"></i> Scikit-learn</span><div class="progress-bar"><div class="progress" style="width: 65%"></div></div><span class="percentage">65%</span></div>
+                    <div class="skill-item"><span><i class="fab fa-git-alt"></i> Git</span><div class="progress-bar"><div class="progress" style="width: 90%"></div></div><span class="percentage">90%</span></div>
+                    <div class="skill-item"><span><i class="fas fa-database"></i> MySQL</span><div class="progress-bar"><div class="progress" style="width: 75%"></div></div><span class="percentage">75%</span></div>
+                    <div class="skill-item"><span><i class="fab fa-html5"></i> HTML/CSS</span><div class="progress-bar"><div class="progress" style="width: 85%"></div></div><span class="percentage">85%</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Connect With Me</h2>
+                <div class="contact-grid">
+                    <div class="social-icons">
+                        <a href="https://github.com/bikram76334" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/bikram-chapagain-55b364392" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.kaggle.com/bikramchapagain" target="_blank" class="social-icon"><i class="fab fa-kaggle"></i></a>
+                        <a href="mailto:bikram204sharma@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <form class="contact-form" id="contactForm">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                        <div id="formStatus" style="margin-top: 10px;"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Bikram Chapagain | Computer Engineer</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode - Symbols only
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        // Check saved preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+        
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // Typing animation
+        const names = ["Bikram Chapagain", "Bikky"];
+        let nameIndex = 0, charIndex = 0, isDeleting = false;
+        const typingElement = document.getElementById("typingName");
+        
+        function typeEffect() {
+            if (!typingElement) return;
+            const currentName = names[nameIndex];
+            if (isDeleting) {
+                charIndex--;
+                typingElement.textContent = currentName.substring(0, charIndex);
+            } else {
+                charIndex++;
+                typingElement.textContent = currentName.substring(0, charIndex);
+            }
+            if (!isDeleting && charIndex === currentName.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 2000);
+                return;
+            }
+            if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                nameIndex = (nameIndex + 1) % names.length;
+                setTimeout(typeEffect, 500);
+                return;
+            }
+            setTimeout(typeEffect, isDeleting ? 100 : 150);
+        }
+        typeEffect();
+
+        // Rating system
+        function updateStarsDisplay(element, rating) {
+            const fullStars = '★'.repeat(rating);
+            const emptyStars = '☆'.repeat(5 - rating);
+            element.textContent = fullStars + emptyStars;
+        }
+        
+        document.querySelectorAll('.rating').forEach(ratingContainer => {
+            const starsSpan = ratingContainer.querySelector('.stars');
+            const messageSpan = ratingContainer.querySelector('.rating-message');
+            const projectId = ratingContainer.dataset.project;
+            const savedRating = localStorage.getItem(`rating_${projectId}`);
+            
+            if (savedRating) {
+                updateStarsDisplay(starsSpan, parseInt(savedRating));
+                messageSpan.textContent = `⭐ Rated ${savedRating}/5`;
+            }
+            
+            starsSpan.addEventListener('click', (e) => {
+                const rect = starsSpan.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const starWidth = rect.width / 5;
+                const rating = Math.floor(clickX / starWidth) + 1;
+                localStorage.setItem(`rating_${projectId}`, rating);
+                updateStarsDisplay(starsSpan, rating);
+                messageSpan.textContent = `⭐ Thanks! You rated ${rating}/5`;
+                setTimeout(() => {
+                    messageSpan.textContent = `Rated ${rating}/5`;
+                }, 2000);
+            });
+        });
+
+        // Contact form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('formStatus').innerHTML = '<p style="color: #10b981;">✓ Message sent! I\'ll get back to you soon.</p>';
+            this.reset();
+            setTimeout(() => {
+                document.getElementById('formStatus').innerHTML = '';
+            }, 3000);
+        });
+
+        // Animate progress bars
+        const observerOptions = { threshold: 0.5 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => { bar.style.width = width; }, 100);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        const skillsSection = document.querySelector('#skills');
+        if (skillsSection) observer.observe(skillsSection);
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Create stars
+        function createStars() {
+            const starsBg = document.getElementById('starsBg');
+            for (let i = 0; i < 30; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsBg.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
+</html>
