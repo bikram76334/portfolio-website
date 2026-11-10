@@ -370,6 +370,100 @@
             .section-head h2 { font-size: 1.7rem; }
             .featured-card { padding: 26px; }
         }
+
+        /* Clickable project cards */
+        .project-card[data-open], .featured-card[data-open] { cursor: pointer; }
+        .project-card:focus-visible, .featured-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+        .card-open { margin-top: 14px; font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; }
+        [data-open]:hover .card-open { color: var(--blue); }
+        .badge { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 9px; border-radius: 30px; margin-left: 8px; background: rgba(245, 158, 11, 0.14); color: #b45309; vertical-align: middle; }
+        .badge.done { background: rgba(13, 148, 136, 0.12); color: var(--teal-deep); }
+        body.dark-mode .badge { color: #fbbf24; }
+        body.dark-mode .badge.done { color: #2dd4bf; }
+
+        /* Door transition + project detail */
+        #door { background: var(--bg); position: fixed; inset: 0; z-index: 200; visibility: hidden; opacity: 0; perspective: 1600px; overflow: hidden; transition: opacity 0.25s ease; }
+        #door.show { visibility: visible; opacity: 1; }
+        .door-page { position: absolute; inset: 0; z-index: 1; background: transparent; overflow-y: auto; opacity: 0; transform: scale(0.94); transition: opacity 0.6s ease 0.15s, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1); }
+        #door.open .door-page { opacity: 1; transform: none; }
+        .door { position: absolute; top: 0; bottom: 0; width: 50%; z-index: 2; pointer-events: none; background: linear-gradient(180deg, #0b1120, #13203b); transition: transform 0.95s cubic-bezier(0.65, 0, 0.25, 1); backface-visibility: hidden; }
+        .door.l { left: 0; transform-origin: left center; border-right: 1px solid rgba(56, 189, 248, 0.4); }
+        .door.r { right: 0; transform-origin: right center; }
+        .door::before { content: ''; position: absolute; inset: 12%; border: 1px solid rgba(56, 189, 248, 0.22); border-radius: 6px; }
+        .door::after { content: ''; position: absolute; top: 50%; width: 14px; height: 14px; border-radius: 50%; background: var(--sky); box-shadow: 0 0 18px rgba(56, 189, 248, 0.6); }
+        .door.l::after { right: 22px; }
+        .door.r::after { left: 22px; }
+        #door.open .door.l { transform: rotateY(-105deg); }
+        #door.open .door.r { transform: rotateY(105deg); }
+
+        .door-bg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; display: none; }
+        .d-wrap { max-width: 860px; margin: 0 auto; padding: 24px 30px 90px; }
+        .d-back { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); color: var(--ink); border: 1px solid var(--border); border-radius: 10px; padding: 9px 16px; font: 600 0.9rem inherit; font-family: inherit; cursor: pointer; }
+        .d-back:hover { border-color: var(--blue); color: var(--blue); }
+        .d-title { font-size: 2.3rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin: 34px 0 12px; }
+        .d-tags { color: var(--ink-soft); font-weight: 600; font-size: 0.95rem; }
+        .d-sec { margin-top: 38px; }
+        .d-sec h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; }
+        .d-sec p, .d-sec li { color: var(--ink-soft); max-width: 68ch; }
+        .d-sec ul { padding-left: 20px; }
+        .d-sec p + p { margin-top: 12px; }
+        .d-sec li { margin-bottom: 6px; }
+        .d-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+        .d-metric { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+        .d-metric b { display: block; font-size: 1.6rem; font-weight: 800; color: var(--blue); }
+        .d-metric span { font-size: 0.85rem; color: var(--ink-soft); }
+        .d-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .d-chips span { background: var(--surface); border: 1px solid var(--border); border-radius: 30px; padding: 4px 13px; font-size: 0.85rem; font-weight: 600; color: var(--ink-soft); }
+        .d-links { display: flex; flex-wrap: wrap; gap: 12px; }
+        .d-links a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: 0.92rem; text-decoration: none; background: var(--blue); color: #fff; }
+        .d-links a:hover { background: var(--blue-deep); }
+        .d-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+        .d-gallery figure { margin: 0; }
+        .d-gallery img { width: 100%; border-radius: 12px; border: 1px solid var(--border); }
+        .d-gallery figcaption { font-size: 0.82rem; color: var(--ink-soft); margin-top: 6px; }
+
+        /* Workflow: 3D data flow */
+        .flow-scene { perspective: 1200px; padding: 6px 0 0; }
+        .flow-plane { position: relative; transform-style: preserve-3d; transform: rotateX(34deg) rotateY(var(--ry, 0deg)); transform-origin: 50% 40%; transition: transform 0.35s ease; padding: 4px 6px 14px; }
+        .flane-name { font-weight: 700; font-size: 0.9rem; margin: 6px 0 10px; }
+        .flane-name span { font-weight: 500; color: var(--ink-soft); margin-left: 8px; font-size: 0.82rem; }
+        .flane-sep { text-align: center; font-size: 0.82rem; font-weight: 600; color: var(--blue); margin: 16px 0 4px; }
+        .flane { position: relative; display: flex; gap: 22px; transform-style: preserve-3d; padding: 14px 12px; background: rgba(37, 99, 235, 0.05); border: 1px dashed var(--border); border-radius: 14px; }
+        .fnode { position: relative; flex: 1; min-width: 0; font-size: 0.74rem; font-weight: 600; font-family: inherit; line-height: 1.25; color: var(--ink); background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 4px 9px; cursor: pointer; transform-style: preserve-3d; transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.3s, box-shadow 0.3s; }
+        .fnode b { display: block; width: 22px; height: 22px; line-height: 22px; margin: 0 auto 6px; border-radius: 50%; background: rgba(37, 99, 235, 0.12); color: var(--blue); font-size: 0.72rem; }
+        .fnode:not(:last-child)::after { content: ''; position: absolute; left: 100%; top: 50%; width: 22px; height: 2px; background: repeating-linear-gradient(90deg, var(--sky) 0 6px, transparent 6px 12px); background-size: 12px 2px; animation: fflow 0.8s linear infinite; }
+        .fnode.on { transform: translateZ(26px); border-color: var(--blue); box-shadow: 0 16px 28px -12px rgba(37, 99, 235, 0.55); }
+        .fnode.on b { background: var(--blue); color: #fff; }
+        .fnode:focus-visible, .flow-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+        @keyframes fflow { to { background-position: 12px 0; } }
+        .fcube { position: absolute; left: 0; top: 0; width: 26px; height: 26px; transform-style: preserve-3d; pointer-events: none; opacity: 0; }
+        .fcube .spin { position: absolute; inset: 0; transform-style: preserve-3d; animation: fspin 5s linear infinite; }
+        .fcube i { position: absolute; inset: 0; border: 1px solid rgba(56, 189, 248, 0.95); background: rgba(56, 189, 248, 0.2); }
+        .fcube i:nth-child(1) { transform: translateZ(13px); }
+        .fcube i:nth-child(2) { transform: rotateY(180deg) translateZ(13px); }
+        .fcube i:nth-child(3) { transform: rotateY(90deg) translateZ(13px); }
+        .fcube i:nth-child(4) { transform: rotateY(-90deg) translateZ(13px); }
+        .fcube i:nth-child(5) { transform: rotateX(90deg) translateZ(13px); }
+        .fcube i:nth-child(6) { transform: rotateX(-90deg) translateZ(13px); }
+        @keyframes fspin { to { transform: rotateX(360deg) rotateY(360deg); } }
+        .fdot { position: absolute; left: 0; top: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--sky); pointer-events: none; opacity: 0; }
+        .flow-info { margin-top: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+        .flow-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+        .fi-data { color: var(--blue); font-weight: 600; font-size: 0.88rem; margin-bottom: 8px; }
+        .flow-btn { margin-top: 12px; background: transparent; color: var(--ink); border: 1px solid var(--border); border-radius: 8px; padding: 6px 14px; font-family: inherit; font-weight: 600; font-size: 0.85rem; cursor: pointer; }
+        .flow-btn:hover { border-color: var(--blue); color: var(--blue); }
+        @media (max-width: 720px) {
+            .flow-plane { transform: none; }
+            .flane { flex-direction: column; gap: 22px; }
+            .fnode { flex: none; font-size: 0.85rem; }
+            .fnode:not(:last-child)::after { left: 50%; top: 100%; width: 2px; height: 22px; background: repeating-linear-gradient(180deg, var(--sky) 0 6px, transparent 6px 12px); background-size: 2px 12px; animation-name: fflowv; }
+            .fnode.on { transform: scale(1.04); }
+        }
+        @keyframes fflowv { to { background-position: 0 12px; } }
+        @media (prefers-reduced-motion: reduce) { .fcube .spin, .fnode::after { animation: none !important; } }
+        body.door-lock { overflow: hidden; }
+        @media (prefers-reduced-motion: reduce) { #door, .door, .door-page { transition-duration: 0.01s !important; transition-delay: 0s !important; } }
+        @media (max-width: 768px) { .d-title { font-size: 1.8rem; } .d-wrap { padding: 18px 20px 70px; } }
     </style>
 </head>
 <body>
@@ -381,7 +475,8 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#featured">Projects</a></li>
-                <li><a href="#ophthalmology">Ophthalmology AI</a></li>
+                <li><a href="#ophthalmology">Medical Imaging</a></li>
+                <li><a href="#systems">Systems</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -512,8 +607,8 @@
             <div class="container">
                 <div class="section-head center">
                     <span class="kicker">Specialization</span>
-                    <h2>Ophthalmology &amp; Retinal Disease AI</h2>
-                    <p>Deep learning models for detecting and classifying retinal disease from fundus images the specific direction I'm building my medical imaging focus around.</p>
+                    <h2>Medical Imaging &amp; Retinal Disease AI</h2>
+                    <p>Retinal disease detection is my main focus. Alongside it, I work on screening platforms and volumetric medical imaging. Select a project to see the full details.</p>
                 </div>
                 <div class="project-grid">
                     <div class="project-card eye">
@@ -539,6 +634,53 @@
                         <div class="project-links">
                             <a href="https://www.kaggle.com/code/bikramchapagain/papelodima" target="_blank" class="project-link"><i class="fab fa-kaggle"></i> View on Kaggle</a>
                         </div>
+                    </div>
+                    <div class="project-card eye" data-id="swasthyaai">
+                        <h3>SwasthyaAI: Bilingual Screening Platform</h3>
+                        <p class="tech teal"><i class="fas fa-eye"></i> PyTorch · FastAPI · Next.js</p>
+                        <p>A bilingual (English and Nepali) web platform for retinal image screening, starting with a diabetic retinopathy module.</p>
+                        <div class="project-links"></div>
+                    </div>
+                    <div class="project-card" data-id="3d-medical-segmentation">
+                        <h3>3D Medical Image Segmentation</h3>
+                        <p class="tech blue"><i class="fas fa-cube"></i> PyTorch · MONAI · 3D U-Net</p>
+                        <p>A volumetric segmentation pipeline for brain MRI (hippocampus), with Dice and Hausdorff metrics implemented from scratch.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/bikram76334/medseg3d" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://www.kaggle.com/code/bikramchapagain/medseg3d" target="_blank" class="project-link"><i class="fab fa-kaggle"></i> Kaggle</a>
+                            <a href="https://huggingface.co/spaces/bikky67/medseg3d-hippocampus" target="_blank" class="project-link"> Hugging Face</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Systems & Engineering -->
+        <section id="systems">
+            <div class="container">
+                <div class="section-head center">
+                    <span class="kicker">Systems &amp; Engineering</span>
+                    <h2>Low-level and backend engineering</h2>
+                    <p>Projects built from first principles: native code, networking, and secure infrastructure.</p>
+                </div>
+                <div class="project-grid">
+                    <div class="project-card" data-id="cpp-image-library">
+                        <h3>C++ Image Processing Library</h3>
+                        <p class="tech blue"><i class="fas fa-microchip"></i> C++17 · OpenMP · CMake</p>
+                        <p>A multi-threaded image filtering library written from scratch, with manual BMP parsing and convolution filters.</p>
+                        <div class="project-links"></div>
+                    </div>
+                    <div class="project-card" data-id="go-api-gateway">
+                        <h3>Secure API Gateway</h3>
+                        <p class="tech blue"><i class="fas fa-server"></i> Go · Redis · JWT · Docker</p>
+                        <p>A backend gateway with JWT authentication, Redis-backed rate limiting and an automated CI/CD pipeline.</p>
+                        <div class="project-links"></div>
+                    </div>
+                    <div class="project-card" data-id="dicom-node">
+                        <h3>DICOM Network Node (PACS Simulator)</h3>
+                        <p class="tech blue"><i class="fas fa-network-wired"></i> Python · pynetdicom · SQLite · TLS</p>
+                        <p>A DICOM server supporting C-ECHO, C-STORE and C-FIND, with a relational metadata index and encrypted transport.</p>
+                        <div class="project-links"></div>
                     </div>
                 </div>
             </div>
@@ -772,6 +914,361 @@
         }, { threshold: 0.4 });
         const skillsSec = document.querySelector('#skills');
         if (skillsSec) observer.observe(skillsSec);
+
+        // ===== Project detail view (door animation) =====
+        // Fill in the fields below. Anything left empty is simply hidden on the detail page.
+        // Card title, tags, description and existing links are read from the card itself.
+        const PROJECTS = {
+            'swasthyaai': {
+                status: 'In progress',
+                overview: '', highlights: [], metrics: [], stack: [], images: [],
+                links: { github: '', kaggle: '', huggingface: '', demo: '', report: '' }
+            },
+            '3d-medical-segmentation': {
+                status: 'Completed',
+                overview: 'Manually outlining organs and structures in 3D MRI and CT scans can take 30 to 60 minutes per case, and the result varies between experts. This project is an end-to-end pipeline that reads volumetric scans (NIfTI and DICOM), standardizes them, trains a 3D U-Net to segment the target structure, and produces voxel-wise masks with overlay images for review.\n\nMedical volumes are large, anisotropic and scanner dependent, so the pipeline handles this explicitly. Scans are reoriented to RAS, resampled to a common voxel spacing, intensity-normalized and cropped into 96x96x96 patches for training. A Dice plus cross-entropy loss counters the imbalance between a small target and a large background, and full volumes are segmented with sliding-window inference using 50% overlap and Gaussian blending.\n\nEvaluation lives in a standalone module with Dice, IoU, Hausdorff distance and HD95 written from scratch with NumPy and SciPy. Surfaces are extracted by erosion and distances come from a Euclidean distance transform scaled by voxel spacing. The functions are unit-tested on toy masks with known answers and cross-checked against MONAI and MedPy. Training runs on a Kaggle GPU, and the trained model is exported so inference can run on a CPU-only machine, such as a Hugging Face Space.',
+                highlights: [
+                    'Volume parsing for NIfTI files and DICOM series, with orientation, spacing and shape checks',
+                    'MONAI dictionary-transform pipeline that keeps image and label aligned: RAS reorientation, resampling, normalization, positive/negative patch sampling and 3D augmentation',
+                    '3D U-Net with encoder, bottleneck, decoder and skip connections, trained with mixed precision and AdamW',
+                    'Dice, IoU, Hausdorff and HD95 implemented from scratch, with unit tests on analytic cases and cross-checks against MONAI and MedPy',
+                    'Sliding-window inference with Gaussian blending, saved as NIfTI masks in the original scan space',
+                    'Overlay visualization of predicted masks on anatomical slices',
+                    'Portable deployment: ONNX export, command-line prediction and a Gradio demo'
+                ],
+                metrics: [],
+                stack: ['PyTorch', 'MONAI', 'Nibabel', 'pydicom', 'NumPy', 'SciPy', 'MedPy', 'ONNX Runtime', 'Gradio', 'Kaggle GPU'],
+                images: [{ src: 'img/fig1_system_architecture.svg', caption: 'Figure 1. System architecture of the 3D medical image segmentation pipeline (3D U-Net)' }],
+                bg: 'volume',
+                flow: {"handoff": "model weights: best.pt / model.onnx", "lanes": [{"name": "Training", "env": "Kaggle GPU (T4 x2 / P100)", "steps": [{"title": "Scans", "data": "NIfTI and DICOM volumes with labels", "lines": ["NIfTI (.nii, .nii.gz) and DICOM series", "Public datasets such as MSD and BraTS", "Image and label pairs"]}, {"title": "Parse", "data": "3D array + affine + voxel spacing", "lines": ["Nibabel and pydicom read the 3D array", "Extract the affine and voxel spacing", "Validate shapes and label values"]}, {"title": "Preprocess", "data": "RAS-oriented, resampled, normalized volume", "lines": ["MONAI dictionary transforms", "Reorient to RAS", "Resample to a common spacing", "CT window or MRI z-score"]}, {"title": "Patches", "data": "Augmented 96×96×96 patches", "lines": ["Positive/negative patch sampling at 96³", "Random flips and 90° rotations", "Small affine and scaling", "Intensity shift and noise"]}, {"title": "3D U-Net", "data": "Class logits, C × 96×96×96", "lines": ["Input 1 × 96×96×96", "Encoder 16-32-64-128, bottleneck 256 channels", "Decoder with skip concatenation", "Output C × 96×96×96"]}, {"title": "Loss", "data": "Gradients from Dice + cross-entropy", "lines": ["DiceCE: 0.5 × Dice + 0.5 × cross-entropy", "AdamW, lr 2e-4, cosine schedule", "Mixed precision (AMP) and backpropagation", "Handles class imbalance"]}, {"title": "Validate", "data": "Dice, IoU, HD and HD95 per case", "lines": ["Every N epochs on the validation set", "Sliding-window prediction", "Dice, IoU, Hausdorff distance and HD95", "Best mean Dice is kept as best.pt"]}, {"title": "Export", "data": "best.pt and model.onnx", "lines": ["best.pt and last.pt (for resuming after timeouts)", "TorchScript or ONNX with dynamic axes", "Outputs compared with PyTorch (max diff < 1e-4)"]}]}, {"name": "Inference", "env": "Any machine (CPU, ONNX Runtime)", "steps": [{"title": "New scan", "data": "One patient volume", "lines": ["NIfTI or DICOM volume", "Single patient case", "Anonymized metadata"]}, {"title": "Preprocess", "data": "Normalized volume + inverse transform info", "lines": ["Same transforms as training, no augmentation", "RAS, spacing, normalization", "Inverse information is stored"]}, {"title": "Sliding window", "data": "Probability map", "lines": ["96×96×96 window with 50% overlap", "Gaussian blending", "ONNX Runtime or PyTorch"]}, {"title": "Post-process", "data": "Class labels in the original space", "lines": ["Argmax to class labels", "Largest connected component", "Fill holes", "Map back to the original space"]}, {"title": "Mask", "data": "mask.nii.gz", "lines": ["Segmentation saved as .nii.gz", "Original affine kept", "Voxel-wise class labels"]}]}]},
+                links: {
+                    github: 'https://github.com/bikram76334/medseg3d',
+                    kaggle: 'https://www.kaggle.com/code/bikramchapagain/medseg3d',
+                    huggingface: 'https://huggingface.co/spaces/bikky67/medseg3d-hippocampus',
+                    demo: '', report: ''
+                }
+            },
+            'cpp-image-library': {
+                status: 'Planned',
+                overview: '', highlights: [], metrics: [], stack: [], images: [],
+                links: { github: '', kaggle: '', huggingface: '', demo: '', report: '' }
+            },
+            'go-api-gateway': {
+                status: 'Planned',
+                overview: '', highlights: [], metrics: [], stack: [], images: [],
+                links: { github: '', kaggle: '', huggingface: '', demo: '', report: '' }
+            },
+            'dicom-node': {
+                status: 'Planned',
+                overview: '', highlights: [], metrics: [], stack: [], images: [],
+                links: { github: '', kaggle: '', huggingface: '', demo: '', report: '' }
+            }
+            // Template for any other project (key = data-id, or the lowercase title with dashes):
+            // 'rfmid-retinal-disease-classification': {
+            //     status: 'Completed',            // 'Completed' | 'In progress' | 'Planned'
+            //     overview: 'Longer description...',
+            //     highlights: ['What you built', 'Key decision', 'Hardest problem'],
+            //     metrics: [{ value: '0.91', label: 'AUC on test set' }],
+            //     stack: ['PyTorch', 'EfficientNet'],
+            //     images: [{ src: 'img/p1.png', caption: 'Grad-CAM example' }],
+            //     links: { github: '', kaggle: '', huggingface: '', demo: '', report: '' }
+            // }
+        };
+
+        const LINK_META = {
+            github:      ['fab fa-github', 'GitHub'],
+            kaggle:      ['fab fa-kaggle', 'Kaggle'],
+            huggingface: [null, ' Hugging Face'],
+            demo:        ['fas fa-circle-play', 'Live demo'],
+            report:      ['fas fa-file-lines', 'Report']
+        };
+
+        const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+        const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Build the door overlay once
+        const door = document.createElement('div');
+        door.id = 'door';
+        door.setAttribute('role', 'dialog');
+        door.setAttribute('aria-modal', 'true');
+        door.setAttribute('aria-label', 'Project details');
+        door.innerHTML = '<canvas class="door-bg" aria-hidden="true"></canvas><div class="door-page"></div><div class="door l"></div><div class="door r"></div>';
+        document.body.appendChild(door);
+        const doorPage = door.querySelector('.door-page');
+        const bgCanvas = door.querySelector('.door-bg');
+        let lastCard = null, flowStop = null, bgStop = null;
+
+        function projectData(card) {
+            const key = card.dataset.id || slug(card.dataset.title);
+            const extra = PROJECTS[key] || {};
+            const tech = card.querySelector('.tech');
+            const desc = card.querySelector('p:not(.tech)');
+            const links = [];
+            card.querySelectorAll('.project-link').forEach(a => {
+                const label = a.textContent.replace('View on ', '').trim();
+                links.push({ href: a.href, icon: a.querySelector('i') ? a.querySelector('i').className : null, label });
+            });
+            Object.entries(extra.links || {}).forEach(([k, url]) => {
+                if (url && !links.some(l => l.href === url)) {
+                    links.push({ href: url, icon: LINK_META[k][0], label: LINK_META[k][1] });
+                }
+            });
+            return {
+                title: card.dataset.title,
+                tags: tech ? tech.textContent.trim() : '',
+                overview: extra.overview || (desc ? desc.textContent.trim() : ''),
+                status: extra.status || '',
+                flow: extra.flow || null,
+                bg: extra.bg || '',
+                highlights: extra.highlights || [],
+                metrics: extra.metrics || [],
+                stack: extra.stack || [],
+                images: extra.images || [],
+                links
+            };
+        }
+
+        // Background animation: a rotating 3D volume with a sweeping scan plane and a highlighted segmentation mask
+        function startBg(kind) {
+            const ctx = bgCanvas.getContext('2d');
+            bgCanvas.style.display = 'block';
+            let seed = 7;
+            const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+            const gauss = () => (rnd() + rnd() + rnd() + rnd() - 2) / 0.577;
+            const base = [], mask = [];
+            for (let i = 0; i < 950; i++) {
+                const side = i % 2 ? 1 : -1;
+                const x = gauss(), y = gauss(), z = gauss(), l = Math.hypot(x, y, z) || 1, r = 0.92 + rnd() * 0.12;
+                base.push([side * 0.2 + x / l * 0.42 * r, y / l * 0.5 * r - 0.02, z / l * 0.64 * r]);
+            }
+            [-1, 1].forEach(side => {
+                for (let i = 0; i < 150; i++) {
+                    const th = (0.15 + rnd() * 0.8) * Math.PI;
+                    mask.push([side * (0.2 + 0.05 * Math.sin(th * 2)) + gauss() * 0.025, -0.12 + 0.2 * Math.sin(th) + gauss() * 0.025, 0.34 * Math.cos(th) + gauss() * 0.025, th]);
+                }
+            });
+            const C = [];
+            for (let i = 0; i < 8; i++) C.push([(i & 1 ? 1 : -1) * 0.78, (i & 2 ? 1 : -1) * 0.78, (i & 4 ? 1 : -1) * 0.78]);
+            const edges = [];
+            for (let i = 0; i < 8; i++) for (let j = i + 1; j < 8; j++) { const d = i ^ j; if (d === 1 || d === 2 || d === 4) edges.push([i, j]); }
+
+            const t0 = performance.now();
+            let raf = 0;
+            function frame(now) {
+                const dpr = window.devicePixelRatio || 1, W = bgCanvas.clientWidth, H = bgCanvas.clientHeight;
+                if (!W || !H) { if (!reduced) raf = requestAnimationFrame(frame); return; }
+                if (bgCanvas.width !== Math.round(W * dpr) || bgCanvas.height !== Math.round(H * dpr)) {
+                    bgCanvas.width = Math.round(W * dpr); bgCanvas.height = Math.round(H * dpr);
+                }
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                ctx.clearRect(0, 0, W, H);
+                const dark = document.body.classList.contains('dark-mode');
+                const cb = dark ? '56,189,248' : '37,99,235', cm = dark ? '45,212,191' : '13,148,136';
+                const small = W < 720, k = (small ? 0.55 : 1) * (dark ? 1 : 0.8);
+                const R = Math.min(W, H) * (small ? 0.42 : 0.36), cx = small ? W * 0.5 : W * 0.8, cy = small ? H * 0.26 : H * 0.36;
+                const t = reduced ? 2 : (now - t0) / 1000;
+                const yaw = reduced ? 0.6 : t * 0.28, pitch = 0.32;
+                const cyw = Math.cos(yaw), syw = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
+                const plane = Math.sin(t * 0.55) * 0.5;
+                const proj = p => {
+                    const x = p[0] * cyw + p[2] * syw, z = -p[0] * syw + p[2] * cyw;
+                    const y2 = p[1] * cp - z * sp, z2 = p[1] * sp + z * cp, f = 2.8 / (2.8 - z2);
+                    return [cx + x * f * R, cy + y2 * f * R, z2, f];
+                };
+                // bounding box
+                ctx.strokeStyle = 'rgb(' + cb + ')'; ctx.lineWidth = 1; ctx.globalAlpha = 0.14 * k;
+                const P = C.map(proj);
+                ctx.beginPath();
+                edges.forEach(e => { ctx.moveTo(P[e[0]][0], P[e[0]][1]); ctx.lineTo(P[e[1]][0], P[e[1]][1]); });
+                ctx.stroke();
+                // anatomy points
+                ctx.fillStyle = 'rgb(' + cb + ')';
+                base.forEach(p => {
+                    const q = proj(p), near = Math.abs(p[1] - plane) < 0.045;
+                    ctx.globalAlpha = Math.min(1, (0.18 + 0.32 * Math.max(0, Math.min(1, (q[2] + 0.7) / 1.4)) + (near ? 0.35 : 0)) * k);
+                    const sz = near ? 2.8 : 1.7;
+                    ctx.fillRect(q[0] - sz / 2, q[1] - sz / 2, sz, sz);
+                });
+                // scan plane
+                const Q = [[-0.72, plane, -0.8], [0.72, plane, -0.8], [0.72, plane, 0.8], [-0.72, plane, 0.8]].map(proj);
+                ctx.beginPath();
+                Q.forEach((q, i) => i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]));
+                ctx.closePath();
+                ctx.globalAlpha = 0.07 * k; ctx.fillStyle = 'rgb(' + cb + ')'; ctx.fill();
+                ctx.globalAlpha = 0.4 * k; ctx.stroke();
+                // segmentation mask
+                ctx.fillStyle = 'rgb(' + cm + ')';
+                mask.forEach(p => {
+                    const q = proj(p), near = Math.abs(p[1] - plane) < 0.06;
+                    const pulse = 0.5 + 0.5 * Math.sin(t * 2 + p[3] * 3);
+                    ctx.globalAlpha = Math.min(1, (0.35 + 0.4 * pulse + (near ? 0.25 : 0)) * k);
+                    const sz = 2.4 * q[3];
+                    ctx.fillRect(q[0] - sz / 2, q[1] - sz / 2, sz, sz);
+                });
+                ctx.globalAlpha = 1;
+                if (!reduced) raf = requestAnimationFrame(frame);
+            }
+            const onResize = () => { if (reduced) frame(performance.now()); };
+            window.addEventListener('resize', onResize);
+            raf = requestAnimationFrame(frame);
+            return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', onResize); bgCanvas.style.display = 'none'; };
+        }
+
+        function initFlow(root, flow) {
+            const nodes = [];
+            let html = '<div class="flow-scene"><div class="flow-plane">';
+            flow.lanes.forEach((lane, li) => {
+                if (li && flow.handoff) html += '<div class="flane-sep"><i class="fas fa-arrow-down"></i> ' + esc(flow.handoff) + '</div>';
+                html += '<div class="flane-name">' + esc(lane.name) + '<span>' + esc(lane.env) + '</span></div><div class="flane">';
+                lane.steps.forEach((st, si) => {
+                    nodes.push({ lane: li, laneName: lane.name, n: si + 1, count: lane.steps.length, st });
+                    html += '<button type="button" class="fnode" aria-label="Step ' + (si + 1) + ': ' + esc(st.title) + '"><b>' + (si + 1) + '</b>' + esc(st.title) + '</button>';
+                });
+                html += '</div>';
+            });
+            html += '<div class="fdot"></div><div class="fdot"></div><div class="fdot"></div><div class="fdot"></div>' +
+                '<div class="fcube"><div class="spin"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></div>' +
+                '<div class="flow-info"><div class="fi-body"></div><button type="button" class="flow-btn"></button></div>';
+            root.innerHTML = html;
+
+            const els = root.querySelectorAll('.fnode');
+            els.forEach((el, i) => { nodes[i].el = el; });
+            const scene = root.querySelector('.flow-scene'), plane = root.querySelector('.flow-plane');
+            const cube = root.querySelector('.fcube'), dots = Array.from(root.querySelectorAll('.fdot'));
+            const body = root.querySelector('.fi-body'), btn = root.querySelector('.flow-btn');
+            const N = nodes.length, STEP = 1900;
+            let t = 0, shown = -1, paused = reduced, raf = 0, last = performance.now();
+
+            const centre = i => {
+                const el = nodes[i].el, lane = el.parentElement;
+                return { x: lane.offsetLeft + el.offsetLeft + el.offsetWidth / 2, y: lane.offsetTop + el.offsetTop + el.offsetHeight / 2 };
+            };
+            const ease = g => g < 0.5 ? 2 * g * g : 1 - Math.pow(-2 * g + 2, 2) / 2;
+            function at(tt) {
+                tt = ((tt % N) + N) % N;
+                const i = Math.floor(tt), j = (i + 1) % N, f = tt - i;
+                const g = f < 0.55 ? 0 : ease((f - 0.55) / 0.45);
+                const a = centre(i), b = centre(j);
+                if (nodes[i].lane === nodes[j].lane && j > i) {
+                    return { x: a.x + (b.x - a.x) * g, y: a.y + (b.y - a.y) * g, z: 46 + Math.sin(g * Math.PI) * 34, o: 1, act: g > 0.7 ? j : i };
+                }
+                return { x: g < 0.5 ? a.x : b.x, y: g < 0.5 ? a.y : b.y, z: 46, o: Math.abs(g - 0.5) * 2, act: g > 0.5 ? j : i };
+            }
+            function show(i) {
+                shown = i;
+                els.forEach((e, k) => e.classList.toggle('on', k === i));
+                const n = nodes[i];
+                body.innerHTML = '<h4>' + esc(n.laneName) + ', step ' + n.n + ' of ' + n.count + ': ' + esc(n.st.title) + '</h4>' +
+                    '<div class="fi-data">Data in motion: ' + esc(n.st.data) + '</div>' +
+                    '<ul>' + n.st.lines.map(l => '<li>' + esc(l) + '</li>').join('') + '</ul>';
+            }
+            function setBtn() { btn.innerHTML = paused ? '<i class="fas fa-play"></i> Play flow' : '<i class="fas fa-pause"></i> Pause'; }
+            function draw() {
+                const c = at(t);
+                cube.style.transform = 'translate3d(' + (c.x - 13) + 'px,' + (c.y - 13) + 'px,' + c.z + 'px)';
+                cube.style.opacity = c.o;
+                dots.forEach((d, k) => {
+                    const q = at(t - 0.1 * (k + 1));
+                    d.style.transform = 'translate3d(' + (q.x - 4) + 'px,' + (q.y - 4) + 'px,' + (q.z - 8) + 'px)';
+                    d.style.opacity = q.o * (0.55 - k * 0.12);
+                });
+                if (c.act !== shown) show(c.act);
+            }
+            function tick(now) {
+                const dt = Math.min(now - last, 100); last = now;
+                if (!paused) t = (t + dt / STEP) % N;
+                draw();
+                raf = requestAnimationFrame(tick);
+            }
+            els.forEach((el, i) => el.addEventListener('click', () => { t = i; paused = true; setBtn(); draw(); }));
+            btn.addEventListener('click', () => { paused = !paused; if (!paused) last = performance.now(); setBtn(); });
+            scene.addEventListener('mousemove', e => {
+                const r = scene.getBoundingClientRect();
+                plane.style.setProperty('--ry', (((e.clientX - r.left) / r.width) - 0.5) * 14 + 'deg');
+            });
+            scene.addEventListener('mouseleave', () => plane.style.setProperty('--ry', '0deg'));
+            setBtn();
+            raf = requestAnimationFrame(tick);
+            return () => cancelAnimationFrame(raf);
+        }
+
+        function renderDetail(d) {
+            if (flowStop) { flowStop(); flowStop = null; }
+            if (bgStop) { bgStop(); bgStop = null; }
+            const sec = (title, inner) => inner ? '<div class="d-sec"><h3>' + title + '</h3>' + inner + '</div>' : '';
+            const status = d.status ? '<span class="badge' + (d.status === 'Completed' ? ' done' : '') + '">' + esc(d.status) + '</span>' : '';
+            doorPage.innerHTML =
+                '<div class="d-wrap">' +
+                '<button class="d-back" type="button"><i class="fas fa-arrow-left"></i> Back to projects</button>' +
+                '<h2 class="d-title">' + esc(d.title) + status + '</h2>' +
+                '<div class="d-tags">' + esc(d.tags) + '</div>' +
+                sec('Overview', d.overview.split(/\n\n/).map(p => '<p>' + esc(p) + '</p>').join('')) +
+                sec('Workflow', d.flow ? '<div class="flow"></div>' : '') +
+                sec('What I built', d.highlights.length ? '<ul>' + d.highlights.map(h => '<li>' + esc(h) + '</li>').join('') + '</ul>' : '') +
+                sec('Results', d.metrics.length ? '<div class="d-metrics">' + d.metrics.map(m => '<div class="d-metric"><b>' + esc(m.value) + '</b><span>' + esc(m.label) + '</span></div>').join('') + '</div>' : '') +
+                sec('Stack', d.stack.length ? '<div class="d-chips">' + d.stack.map(s => '<span>' + esc(s) + '</span>').join('') + '</div>' : '') +
+                sec('Figures', d.images.length ? '<div class="d-gallery">' + d.images.map(i => '<figure><img src="' + esc(i.src) + '" alt="' + esc(i.caption || d.title) + '" loading="lazy"><figcaption>' + esc(i.caption || '') + '</figcaption></figure>').join('') + '</div>' : '') +
+                sec('Links', d.links.length ? '<div class="d-links">' + d.links.map(l => '<a href="' + esc(l.href) + '" target="_blank" rel="noopener">' + (l.icon ? '<i class="' + esc(l.icon) + '"></i> ' : '') + esc(l.label) + '</a>').join('') + '</div>' : '') +
+                '</div>';
+            doorPage.scrollTop = 0;
+            if (d.flow) flowStop = initFlow(doorPage.querySelector('.flow'), d.flow);
+            if (d.bg) bgStop = startBg(d.bg);
+            doorPage.querySelector('.d-back').addEventListener('click', closeDoor);
+        }
+
+        function setInert(on) {
+            document.querySelectorAll('nav, main, footer').forEach(el => { el.inert = on; });
+        }
+
+        function openDoor(card) {
+            lastCard = card;
+            renderDetail(projectData(card));
+            document.body.classList.add('door-lock');
+            setInert(true);
+            door.classList.add('show');
+            setTimeout(() => {
+                door.classList.add('open');
+                const back = doorPage.querySelector('.d-back');
+                if (back) back.focus({ preventScroll: true });
+            }, reduced ? 30 : 280);
+        }
+
+        function closeDoor() {
+            if (!door.classList.contains('open')) return;
+            door.classList.remove('open');
+            setTimeout(() => {
+                door.classList.remove('show');
+                if (flowStop) { flowStop(); flowStop = null; }
+                if (bgStop) { bgStop(); bgStop = null; }
+                document.body.classList.remove('door-lock');
+                setInert(false);
+                if (lastCard) lastCard.focus({ preventScroll: true });
+            }, reduced ? 30 : 1000);
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDoor(); });
+
+        document.querySelectorAll('.project-card, .featured-card').forEach(card => {
+            const h3 = card.querySelector('h3');
+            card.dataset.title = h3.textContent.trim();
+            card.dataset.open = '1';
+            card.tabIndex = 0;
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', 'Open details: ' + card.dataset.title);
+            const meta = PROJECTS[card.dataset.id || slug(card.dataset.title)];
+            if (meta && meta.status) {
+                h3.insertAdjacentHTML('beforeend', '<span class="badge' + (meta.status === 'Completed' ? ' done' : '') + '">' + esc(meta.status) + '</span>');
+            }
+            const hint = document.createElement('div');
+            hint.className = 'card-open';
+            hint.innerHTML = '<i class="fas fa-door-open"></i> Open details';
+            (card.querySelector('.featured-body') || card).appendChild(hint);
+            card.addEventListener('click', e => { if (!e.target.closest('a')) openDoor(card); });
+            card.addEventListener('keydown', e => {
+                if ((e.key === 'Enter' || e.key === ' ') && e.target === card) { e.preventDefault(); openDoor(card); }
+            });
+        });
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
